@@ -7,11 +7,12 @@ pipeline {
         stage('Sag Hallo') {
             steps {
                 echo 'Hallo'
+                echo 'Welt'
             }
         } 
         stage('Erzeuge JAR') {
             steps {
-                sh 'mvn package'
+                sh 'mvn clean package'
             }
         }
         stage('Verteile was') {
