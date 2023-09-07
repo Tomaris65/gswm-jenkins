@@ -1,20 +1,23 @@
 pipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
     stages {
-        stage('Mach was 1') {
+        stage('Mach was') {
             steps {
                 echo 'START'
             }
         } 
-        stage('Mach was 2') {
+        stage('Erzeuge JAR') {
             steps {
+                echo "Baue JAR"
                 sh 'mvn package'
+                echo "JAR gebaut"
             }
         }
-        stage('Mach was 3') {
+        stage('Verteile was') {
             steps {
-                echo 'Suche Ergebnis'
-                sh 'ls target'
+                echo 'Kopiere das Ergebnis'
+                sh 'cp target/*.jar /home/student '
+                echo 'Ergebnis kopiert'
             }
         }
     }
