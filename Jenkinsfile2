@@ -1,41 +1,40 @@
 pipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
     stages {
-        stage('Mach was') {
+        environment { 
+            TARGET = '/home/student'
+        }
+        stage('Sag Hallo') {
             steps {
-                echo 'START'
+                echo 'Hallo'
             }
         } 
         stage('Erzeuge JAR') {
             steps {
-                echo "Baue JAR"
                 sh 'mvn package'
-                echo "JAR gebaut"
             }
         }
         stage('Verteile was') {
             steps {
-                echo 'Kopiere das Ergebnis'
-                sh 'cp target/*.jar /home/student '
-                echo 'Ergebnis kopiert'
+                sh 'cp target/*.jar ${TARGET} '
             }
         }
     }
     post {
         always {
-             echo 'Ever'
+             echo 'Immer !'
         }
         success {
-            echo 'YES - Das klappt'
+            echo 'Das klappt'
         }
         unstable {
-            echo 'UPS was ist das '
+            echo 'UPS, was ist das '
         }
         failure {
-            echo 'Nix gut !'
+            echo 'Nich gut !'
         }
         changed {
-            echo 'Mhh, anders'
+            echo 'Mhh, anders aber ...'
         }
     }
 }
