@@ -1,9 +1,9 @@
 pipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
+    environment { 
+        TARGET = '/home/student'
+    }
     stages {
-        environment { 
-            TARGET = '/home/student'
-        }
         stage('Sag Hallo') {
             steps {
                 echo 'Hallo'
