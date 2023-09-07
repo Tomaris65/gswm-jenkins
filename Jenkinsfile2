@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Mach was 3') {
             steps {
-                echo 'ENDE'
+                sh 'mvn package'
             }
         }
     }
