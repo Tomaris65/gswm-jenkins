@@ -13,6 +13,7 @@ pipeline {
         }
         stage('Mach was 3') {
             steps {
+                echo 'Suche Ergebnis'
                 sh 'ls target'
             }
         }
