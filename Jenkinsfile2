@@ -3,14 +3,21 @@ pipeline {
     stages {
         stage('Mach was ') {
             steps {
+                echo 'START'
+            }
+            steps {
                 sh 'ls'
+            }
+            steps {
+                echo 'ENDE'
             }
         }
     }
     post {
         always {
-            echo 'Immer'
-            deleteDir() /* clean up our workspace */
+             mail to: 'tmatyak@gmx.dem',
+             subject: "Name: ${currentBuild.fullDisplayName}",
+             body: "Es läuft ${env.BUILD_URL}"
         }
         success {
             echo 'YES - Das klappt'
