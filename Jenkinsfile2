@@ -1,13 +1,17 @@
 pipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
     stages {
-        stage('Mach was ') {
+        stage('Mach was 1') {
             steps {
                 echo 'START'
             }
+        } 
+        stage('Mach was 2') {
             steps {
                 sh 'ls'
             }
+        }
+        stage('Mach was 3') {
             steps {
                 echo 'ENDE'
             }
