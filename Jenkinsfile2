@@ -1,7 +1,7 @@
 pipeline {
-    agent any
+    agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
     stages {
-        stage('No-op') {
+        stage('Mach was ') {
             steps {
                 sh 'ls'
             }
@@ -9,20 +9,20 @@ pipeline {
     }
     post {
         always {
-            echo 'One way or another, I have finished'
+            echo 'Immer'
             deleteDir() /* clean up our workspace */
         }
         success {
-            echo 'I succeeded!'
+            echo 'YES - Das klappt'
         }
         unstable {
-            echo 'I am unstable :/'
+            echo 'UPS was ist das '
         }
         failure {
-            echo 'I failed :('
+            echo 'Nix gut !'
         }
         changed {
-            echo 'Things were different before...'
+            echo 'Mhh, anders'
         }
     }
 }
