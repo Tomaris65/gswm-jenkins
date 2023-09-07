@@ -8,12 +8,12 @@ pipeline {
         } 
         stage('Mach was 2') {
             steps {
-                sh 'ls'
+                sh 'mvn package'
             }
         }
         stage('Mach was 3') {
             steps {
-                sh 'mvn package'
+                sh 'ls target'
             }
         }
     }
