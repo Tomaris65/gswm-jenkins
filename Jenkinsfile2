@@ -1,0 +1,41 @@
+pipeline {
+    agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
+    environment { 
+        TARGET = '/home/student'
+    }
+    stages {
+        stage('Sag Hallo') {
+            steps {
+                echo 'Hallo'
+                echo 'Welt'
+            }
+        } 
+        stage('Erzeuge JAR') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        stage('Verteile was') {
+            steps {
+                sh 'cp target/*.jar ${TARGET} '
+            }
+        }
+    }
+    post {
+        always {
+             echo 'Immer !'
+        }
+        success {
+            echo 'Das klappt'
+        }
+        unstable {
+            echo 'UPS, was ist das '
+        }
+        failure {
+            echo 'Nich gut !'
+        }
+        changed {
+            echo 'Mhh, anders aber ...'
+        }
+    }
+}
