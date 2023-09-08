@@ -29,7 +29,17 @@ pipeline {
                 expression {params.DEPLOY == true}
             }
             steps {
-                echo 'DEPLOY'
+                echo 'DEPLOY wird ausgefuehrt'
+                echo "DEPLOY ${params.DEPLOY}"
+            }
+        }
+        stage('Patch 1 - Kein eploy') {
+            when {
+                branch 'patch-1'
+                expression {params.DEPLOY == false}
+            }
+            steps {
+                echo 'DEPLOY wird nicht ausgefuehrt'
                 echo "DEPLOY ${params.DEPLOY}"
             }
         }
