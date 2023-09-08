@@ -5,7 +5,7 @@ LOYpipeline {
     }
     parameters {
         string(name: 'PERSON', defaultValue: 'Nobody', description: 'Who should I say hello to?')
-        booleanParam(name: "DEPLOY", defaultValue: false, description: "Deploy oder nicht deploy, das ist hier die Frage")
+        booleanParam(name: 'DEPLOY', defaultValue: false, description: 'Deploy oder nicht deploy, das ist hier die Frage')
     }
     stages {
         stage('Sag Hallo') {
@@ -25,7 +25,8 @@ LOYpipeline {
         }
         stage('Patch 1 - Deploy') {
             when {
-                expression {params.DEPLOY == 'true'}
+                branch 'patch-1'
+                /* expression {params.DEPLOY == 'true'} */
             }
             steps {
                 echo 'DEPLOY'
