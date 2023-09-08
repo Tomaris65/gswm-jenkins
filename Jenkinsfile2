@@ -26,7 +26,7 @@ LOYpipeline {
         stage('Patch 1 - Deploy') {
             when {
                 branch 'patch-1'
-                expression { return params.DEPLOY}
+                expression {params.DEPLOY == 'true'}
             }
             steps {
                 echo 'DEPLOY'
