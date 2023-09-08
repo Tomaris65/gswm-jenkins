@@ -1,4 +1,4 @@
-pipeline {
+LOYpipeline {
     agent { docker { image 'maven:3.9.4-eclipse-temurin-17-alpine' } }
     environment { 
         TARGET = '/home/student'
@@ -19,7 +19,7 @@ pipeline {
                 branch 'patch-1'
             }
             steps {
-                echo 'PATCH'
+                echo 'BASIS'
                 echo "Hello ${params.PERSON}"
             }
         }
@@ -30,7 +30,7 @@ pipeline {
             }
             steps {
                 echo 'DEPLOY'
-                echo "Hello ${params.PERSON}"
+                echo "DEPLOY ${params.DEPLOY}"
             }
         }
     }
