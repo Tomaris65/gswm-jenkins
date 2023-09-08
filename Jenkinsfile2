@@ -39,7 +39,7 @@ pipeline {
                 expression {params.DEPLOY == false}
             }
             steps {
-                echo 'DEPLOY wird nicht ausgefuehrt'
+                echo 'DEPLOY wird nicht ausgefuehrt!'
                 echo "DEPLOY ${params.DEPLOY}"
             }
         }
