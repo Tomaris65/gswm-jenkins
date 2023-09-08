@@ -3,6 +3,9 @@ pipeline {
     environment { 
         TARGET = '/home/student'
     }
+    parameters {
+        string(name: 'PERSON', defaultValue: 'Nobody', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Sag Hallo') {
             steps {
@@ -10,22 +13,13 @@ pipeline {
                 echo 'Welt'
             }
         } 
-        stage('Erzeuge JAR') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-        stage('Verteile was') {
-            steps {
-                sh 'cp target/*.jar ${TARGET} '
-            }
-        }
         stage('Patch') {
             when {
                 branch 'patch-1'
             }
             steps {
                 echo 'PATCH1'
+                echo "Hello ${params.PERSON}"
             }
         }
     }
