@@ -20,6 +20,14 @@ pipeline {
                 sh 'cp target/*.jar ${TARGET} '
             }
         }
+        stage('Patch') {
+            when {
+                branch 'patch-1'
+            }
+            steps {
+                echo 'PATCH1'
+            }
+        }
     }
     post {
         always {
