@@ -4,22 +4,29 @@ pipeline {
         TARGET = '/home/student'
     }
     stages {
-        stage('Sag Hallo') {
-            steps {
-                echo 'Hallo'
-                echo 'Welt'
+        stage('deploy test') {
+            when {
+                branch 'master'
             }
-        } 
-        stage('Erzeuge JAR') {
             steps {
-                sh 'mvn clean package'
+                sh 'MASTER'
             }
         }
-        stage('Verteile was') {
+        stage('deploy entwe') {
+            when {
+                branch 'patch-1'
+            }
             steps {
-                sh 'cp target/*.jar ${TARGET} '
+                echo 'PATH'
+                when {
+                    param 'test'
+                }
+                steps {
+                    echo 'TEST'
+                }
             }
         }
+        
     }
     post {
         always {
